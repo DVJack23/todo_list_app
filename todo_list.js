@@ -1,5 +1,4 @@
 const Task = require('./task.js');
-const task = require("./task");
 const prompt = require('prompt-sync')();
 
 // add_task() – pridá novú úlohu do zoznamu.
@@ -37,7 +36,15 @@ class TodoList {
 
     }
 
-    markTaskDone(task) {}
+    markTaskDone() {
+        let x = 1;
+        for (let task of this.tasks) {
+            console.log(`${x}) Title:${task.title} Description:${task.description}`);
+            x++;
+        }
+        let index = parseInt(prompt(`Choose a task to mark as done:`));
+        this.tasks[index - 1].isCompleted = true;
+    }
 }
 
 module.exports = TodoList;
